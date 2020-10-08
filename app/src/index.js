@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import logger from "redux-logger";
+// import logger from "redux-logger";
+import thunk from "redux-thunk";
 
 import "./index.css";
 import App from "./App";
@@ -10,7 +11,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import episodeReducer from "./store/reducers/episodesReducer";
 
-const store = createStore(episodeReducer, applyMiddleware(logger));
+const store = createStore(episodeReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
