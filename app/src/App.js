@@ -8,15 +8,24 @@ function App(props) {
   const { fetchEpisodes, episodes } = props;
   useEffect(() => {
     if (episodes.length === 0) {
-      fetchEpisodes("https://api.jikan.moe/v3/anime/1/episodes");
+      fetchEpisodes();
     }
   }, [fetchEpisodes, episodes]);
   return (
     <div className="App">
-      {props.episodes.map((episode, i) => {
-        console.log(episode);
-        return <div key={i}>{episode.title}</div>;
-      })}
+      <h1>List of Anime Episodes</h1>
+      <div className="wrapper">
+        {props.episodes.map((episode, i) => {
+          // console.log(episode);
+          return (
+            <div className="episode" key={i}>
+              <h2>{episode.title}</h2>
+              <h3>{episode["title_japanese"]}</h3>
+              <a href={episode.video_url}>Watch the episode here</a>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
